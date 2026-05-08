@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityExplorer.Utility;
 using UnityExplorer.UI;
 using UnityExplorer.UI.Panels;
 using UniverseLib.UI;
@@ -70,7 +71,7 @@ namespace UnityExplorer.ObjectExplorer
             if (SceneHandler.SelectedScene != go.scene)
             {
                 int idx;
-                if (go.scene == default || go.scene.handle == -1)
+                if (go.scene == default || go.scene.GetIntHandle() == -1)
                     idx = sceneDropdown.options.Count - 1;
                 else
                     idx = sceneDropdown.options.IndexOf(sceneToDropdownOption[go.scene]);

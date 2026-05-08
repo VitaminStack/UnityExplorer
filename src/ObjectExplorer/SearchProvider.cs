@@ -1,6 +1,7 @@
 ﻿using UnityEngine.SceneManagement;
 
 namespace UnityExplorer.ObjectExplorer;
+using UnityExplorer.Utility;
 
 public enum SearchContext
 {
@@ -31,7 +32,7 @@ public static class SearchProvider
         return filter switch
         {
             SceneFilter.Any => true,
-            SceneFilter.DontDestroyOnLoad => scene.handle == -12,
+            SceneFilter.DontDestroyOnLoad => scene.GetIntHandle() == -12,
             SceneFilter.HideAndDontSave => scene == default,
             SceneFilter.ActivelyLoaded => scene.buildIndex != -1,
             _ => false,
