@@ -31,10 +31,15 @@
         // In Unity 2020 they introduced "Canvas.renderingDisplaySize".
         // If you try to get the value on a Canvas which has a renderMode value of WorldSpace and no worldCamera set,
         // the game will Crash (I think from Unity trying to read from null ptr).
-        internal static void Canvas_renderingDisplaySize_Prefix(Canvas __instance)
+        internal static bool Canvas_renderingDisplaySize_Prefix(Canvas __instance, ref Vector2 __result)
         {
             if (__instance.renderMode == RenderMode.WorldSpace && !__instance.worldCamera)
-                throw new InvalidOperationException("Canvas is set to RenderMode.WorldSpace but not worldCamera is set.");
+            {
+                __result = Vector2.zero;
+                return false;
+            }
+
+            return true;
         }
     }
 }
