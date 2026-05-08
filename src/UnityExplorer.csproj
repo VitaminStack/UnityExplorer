@@ -355,4 +355,7 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if /I &quot;$(ConfigurationName)&quot;==&quot;ML_Cpp_CoreCLR&quot; (&#xA;    if not exist &quot;F:\SteamLibrary\steamapps\common\Eco\Mods&quot; mkdir &quot;F:\SteamLibrary\steamapps\common\Eco\Mods&quot;&#xA;    if not exist &quot;F:\SteamLibrary\steamapps\common\Eco\UserLibs&quot; mkdir &quot;F:\SteamLibrary\steamapps\common\Eco\UserLibs&quot;&#xA;&#xA;    copy /Y &quot;$(TargetPath)&quot; &quot;F:\SteamLibrary\steamapps\common\Eco\Mods\&quot;&#xA;    copy /Y &quot;$(TargetDir)mcs.dll&quot; &quot;F:\SteamLibrary\steamapps\common\Eco\Mods\&quot;&#xA;    copy /Y &quot;$(TargetDir)Tomlet.dll&quot; &quot;F:\SteamLibrary\steamapps\common\Eco\Mods\&quot;&#xA;    copy /Y &quot;$(SolutionDir)..\UniverseLib\Release\UniverseLib.Il2Cpp.Interop\UniverseLib.ML.IL2CPP.Interop.dll&quot; &quot;F:\SteamLibrary\steamapps\common\Eco\UserLibs\&quot;&#xA;)" />
+  </Target>
 </Project>
